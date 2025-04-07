@@ -1,0 +1,24 @@
+/* Main styles */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+.skill-card {
+    transition: all 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .skill-grid {
+        grid-template-columns: 1fr;
+    }
+}
