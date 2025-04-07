@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    
+    <!-- CSS Imports -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tailwindScript = document.createElement('script');
+            tailwindScript.src = 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio';
+            document.head.appendChild(tailwindScript);
+        });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-blue-500 p-6 text-white">
+                    <h1 class="text-3xl font-bold">
+                        <i class="fas fa-chart-bar mr-2"></i>Analysis Results
+                    </h1>
+                    <p class="mt-2">Candidate match with job requirements</p>
+                </div>
+
+                <div class="p-8 space-y-8">
+                    <!-- Match Score -->
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Match Score</h2>
+                        <div class="flex items-center">
+                            <div class="w-full bg-gray-200 rounded-full h-4">
+                                <div class="bg-blue-500 h-4 rounded-full progress-bar" style="width: {{ score }}%"></div>
+                            </div>
+                            <span class="ml-4 text-2xl font-bold text-gray-700">{{ score }}%</span>
+                        </div>
+                    </div>
+
+                    <!-- Resume Summary -->
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-file-alt text-blue-500 mr-2"></i>Resume Summary
+                        </h2>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-gray-700">{{ summary }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Top Skills -->
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                            <i class="fas fa-star text-blue-500 mr-2"></i>Top Matching Skills
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {% for skill in top_skills %}
+                            <div class="bg-white border border-blue-200 rounded-lg p-4 flex items-center skill-card">
+                                <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
+                                <span class="text-gray-700 font-medium">{{ skill }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="pt-6 flex space-x-4">
+                        <a href="/" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition duration-200 flex items-center">
+                            <i class="fas fa-redo mr-2"></i> Analyze Another
+                        </a>
+                        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-6 rounded-lg transition duration-200 flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
